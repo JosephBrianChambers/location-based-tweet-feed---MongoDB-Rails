@@ -20,8 +20,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-require 'json'
-require 'em-twitter'
+gem 'json'
+gem 'em-twitter'
 gem "mongoid", "~> 3.0.0"
 
 
