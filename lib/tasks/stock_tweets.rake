@@ -6,10 +6,10 @@ namespace :db do
       :path => '/1.1/statuses/filter.json',
       :params => {:locations => '-180,-90,180,90'},#all geo tweets
       :oauth => {
-        :consumer_key    => 'P1ktJO7mwtNk7Y6BNmKaQ',
-        :consumer_secret => 'tvsLa5EsaHCnkpQ5age9lotPomSnwtD1KXgX5rx9LfA',
-        :token => '1947982076-1SN9kQArVT1ZuhTFAI5ACP4VfA4eqImSDoZb7ry',
-        :token_secret    => 'g9FVW2OfZhZTr1Gjll3B4BhYfayQX3eRQPEGOOPjYSUNT'
+        :consumer_key    => ENV["TWITTER_CONSUMER_KEY"],
+        :consumer_secret => ENV["TWITTER_CONSUMER_SECRET"],
+        :token           => ENV["TWITTER_TOKEN"],
+        :token_secret    => ENV["TWITTER_TOKEN_SECRET"]
       }
     }
 

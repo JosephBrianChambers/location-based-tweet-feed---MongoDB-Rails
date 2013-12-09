@@ -25,6 +25,7 @@ gem 'em-twitter'
 gem "mongoid", "~> 3.1.0"
 gem "origin", "~> 1.0.4"
 gem 'kaminari'
+gem 'figaro'
 
 
 # To use ActiveModel has_secure_password
