@@ -20,9 +20,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
-require 'json'
-require 'em-twitter'
-gem "mongoid", "~> 3.0.0"
+gem 'json'
+gem 'em-twitter'
+gem "mongoid", "~> 3.1.0"
+gem "origin", "~> 1.0.4"
+gem 'kaminari'
 
 
 # To use ActiveModel has_secure_password

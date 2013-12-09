@@ -1,0 +1,29 @@
+joejoe
+<form class="tweet-query" action="<%= tweets_url %>" method="get" accept-charset="utf-8">
+  <label for="latitude">latitude</label>
+  <input type="text" name="lat" id="latitude">
+  
+  <label for="longitude">longitude</label>
+  <input type="text" name="long" id="longitude">
+  
+  <label for="radius">radius(miles)</label>
+  <input type="text" name="radius" id="radius">
+  
+  <input type="hidden" name="<%=form_authenticity_token%>">
+  <input   type="submit" value="Browse area tweets">
+</form>
+
+
+
+
+
+
+<% @tweets.each do |tweet|%>
+  <br>
+  <%#= tweet.text %>
+  <%= tweet.created_at%>
+  <%= tweet.text %>
+<%end%>
+
+
+<%= paginate @tweets %>
