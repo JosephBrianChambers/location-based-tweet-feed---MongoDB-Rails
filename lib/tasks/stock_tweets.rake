@@ -15,7 +15,7 @@ namespace :db do
 
     EM.run do
       client = EM::Twitter::Client.connect(tweet_stream)
-      time_cap = 3 #seconds
+      time_cap = 5 #seconds
       EventMachine.add_timer(time_cap) { EM::stop_event_loop }
       
       client.each do |tweet|
@@ -23,7 +23,7 @@ namespace :db do
         Tweet.create(
         text: tweet["text"],
         screen_name: tweet["user"]["screen_name"],
-        coordinates: tweet["coordinates"],
+        coordinates: tweet["coordinates"]["coordinates"],
         created_at: tweet["created_at"]
         )
       end
