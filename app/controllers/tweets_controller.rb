@@ -16,7 +16,7 @@ class TweetsController < ApplicationController
     
     respond_to do |format|
       format.html  { render :index }
-      format.json  { render :json => {"team" => @long, "leaders" => @leaders}}
+      format.json  { render :json => {"tweets" => @tweets}}
     end
   end
 end

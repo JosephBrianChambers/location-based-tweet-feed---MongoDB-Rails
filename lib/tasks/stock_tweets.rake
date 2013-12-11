@@ -14,6 +14,7 @@ namespace :db do
     }
 
     EM.run do
+        
       time_cap = 20 #seconds
       #end EM event_loop
       EventMachine.add_timer(time_cap) {EM::stop_event_loop}
@@ -21,19 +22,16 @@ namespace :db do
       #start web socket server
       EM::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
         #live tweets to draw live feed from
-        #tweet_feed_channel = EventMachine::Channel.new
-        
-        live_tweets =[]
-        feed_rate = 5 #seconds
-        EventMachine::PeriodicTimer.new(feed_rate) do
-          ws.send(live_tweets[-1])
-          live_tweets = [live_tweets[-1]]
-        end
+        # live_tweets =[]
+        # feed_rate = 5 #seconds
+        # EventMachine::PeriodicTimer.new(feed_rate) do
+        #   ws.send(live_tweets[-1])
+        #   live_tweets = [live_tweets[-1]]
+        # end
         
         #connect to twitter stream api
         client = EM::Twitter::Client.connect(tweet_stream)
         client.each do |tweet|
-          #store tweets
           tweet = JSON.parse(tweet)
           
           abridged_tweet = {
@@ -43,7 +41,7 @@ namespace :db do
             "created_at"  => tweet["created_at"]
           }
           
-          live_tweets << abridged_tweet.to_json
+          #live_tweets << abridged_tweet.to_json
           
           # Tweet.create(
             # text: abridged_tweet["text"],
