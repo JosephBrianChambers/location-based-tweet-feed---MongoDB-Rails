@@ -4,7 +4,7 @@
   $(document).ready(function () {
     $('.tweet-query').on('submit', function (event) {
       event.preventDefault();
-      //TODO refactor to submit ajax for tweets and update DOM
+      //TODO refactor to submit ajax for tweets and update dom
       
       //Establish Websocket connection for live feed updating
       var Socket = new WebSocket("ws://localhost:8080");

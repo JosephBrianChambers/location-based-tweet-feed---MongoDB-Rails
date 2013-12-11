@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
 
 #map-canvas {
-  width: 600px;
-  height: 600px;
+  width: 400px;
+  height: 400px;
+}
+
+.title {
+  text-align:center;
 }
