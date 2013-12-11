@@ -12,10 +12,6 @@
   <input   type="submit" value="Browse area tweets">
 </form>
 
-
-
-
-
 <ul class="tweets">
   <% @tweets.each do |tweet|%>
   <li class="tweet">
@@ -24,6 +20,63 @@
   </li>
   <%end%>
 </ul>
-
-
 <%= paginate @tweets %>
+
+<div id="map-canvas"></div>
+
+
+
+
+<!-- google map -->
+
+<script type="text/javascript">
+  function initialize() {
+    var center = new google.maps.LatLng(<%= @lat %>, <%= @long %>);
+    var mapOptions = {
+      center: center,
+      zoom: 7
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
+    
+    var geoCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.15,
+      map: map,
+      center: center,
+      radius: <%= @radius * 3959 * 1609 %> //convert from miles to meters
+    })
+    
+    var marker = new google.maps.Marker({
+      position: center,
+      map: map,
+      title: "lat:<%=@lat%> long:<%=@long%>",
+    });
+
+    <% @tweets.each_with_index do |tweet, idx| %>
+      var marker<%=idx%> = new google.maps.Marker({
+        position: new google.maps.LatLng(<%=tweet.coordinates[1]%>, <%=tweet.coordinates[0]%>),
+        map: map,
+        title: "<%= tweet.screen_name %>:<br><br> <%= tweet.text %>"
+      });
+    
+      google.maps.event.addListener(marker<%=idx%>, 'click', function() {
+        var infowindow = new google.maps.InfoWindow({
+              content: marker<%=idx%>.title,
+              maxWidth: 200,
+        });
+        infowindow.open(map,marker<%=idx%>);
+      });
+    <% end %>
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+
+
+
+

@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
     radius_of_earth = 3959.0 #miles
     @lat    = params[:lat]    || 40.7061464
     @long   = params[:long]   || 29.9461729
-    @radius = params[:radius] || 1000
+    @radius = params[:radius] || 100
     @radius /= radius_of_earth
     
     #Tweets in geo-circle descending by creation DateTime
