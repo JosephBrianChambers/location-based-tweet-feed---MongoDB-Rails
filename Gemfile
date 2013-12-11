@@ -26,6 +26,9 @@ gem "mongoid", "~> 3.1.0"
 gem "origin", "~> 1.0.4"
 gem 'kaminari'
 gem 'figaro'
+gem 'em-websocket'
+
+
 
 
 # To use ActiveModel has_secure_password

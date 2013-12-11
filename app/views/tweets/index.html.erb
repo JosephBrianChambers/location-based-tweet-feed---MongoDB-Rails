@@ -16,13 +16,14 @@
 
 
 
-
-<% @tweets.each do |tweet|%>
-  <br>
-  <%#= tweet.text %>
-  <%= tweet.created_at%>
-  <%= tweet.text %>
-<%end%>
+<ul class="tweets">
+  <% @tweets.each do |tweet|%>
+  <li class="tweet">
+    <%= tweet.created_at%>
+    <%= tweet.text %>
+  </li>
+  <%end%>
+</ul>
 
 
 <%= paginate @tweets %>
