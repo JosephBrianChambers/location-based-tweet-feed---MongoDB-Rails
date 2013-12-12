@@ -19,7 +19,6 @@
       $('.tweet-query').trigger('submit');
     })
 
-
     //on submit of location info
     $('.tweet-query').on('submit', function (event) {
       event.preventDefault();

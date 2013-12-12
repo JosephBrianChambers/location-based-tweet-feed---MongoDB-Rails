@@ -3,7 +3,7 @@
     <a href='#' class="previous">previous</a>
     <span class="notice">No Tweets</span>
   <% } else { %>
-    <% if (data.page === 0 ) { %>
+    <% if (parseInt(data.page) === 1 ) { %>
       <a href="#" class="next">next</a>
     <% } else { %>
       <a href='#' class="previous">previous</a>  <a href='#' class="next">next</a>
