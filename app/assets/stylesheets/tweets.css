@@ -14,3 +14,9 @@
 .pagination-links {
   text-align: center;
 }
+
+.example {
+  color: grey;
+  font: icon;
+  font-size: 12px;
+}
