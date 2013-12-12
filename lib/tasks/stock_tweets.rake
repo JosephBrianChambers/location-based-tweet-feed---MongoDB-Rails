@@ -1,5 +1,5 @@
 namespace :db do
-  desc "Uses a 4 hour capped Event Machine connection to public Twitter stream API to stock mongo db with only geo enabled tweets"
+  desc "Uses a time capped Event Machine connection to public Twitter stream API to stock mongo db with only geo enabled tweets"
   task :stock_tweets => :environment do
     #twitter stream api connection config
     tweet_stream = {
