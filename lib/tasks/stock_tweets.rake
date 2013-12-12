@@ -13,21 +13,21 @@ namespace :db do
       }
     }
 
-    EM.run do
-        
+
+    Tweet.delete_all
+    EM.run do  
       time_cap = 60*5 #seconds
-      #end EM event_loop
       EventMachine.add_timer(time_cap) {EM::stop_event_loop}
       
-      #start web socket server
+      # #start web socket server
       # EM::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
-        #live tweets to draw live feed from
-        # live_tweets =[]
-        # feed_rate = 5 #seconds
-        # EventMachine::PeriodicTimer.new(feed_rate) do
-        #   ws.send(live_tweets[-1])
-        #   live_tweets = [live_tweets[-1]]
-        # end
+      #   #live tweets to draw live feed from
+      #   live_tweets =[]
+      #   feed_rate = 5 #seconds
+      #   EventMachine::PeriodicTimer.new(feed_rate) do
+      #     ws.send(live_tweets[-1])
+      #     live_tweets = [live_tweets[-1]]
+      #   end
         
         #connect to twitter stream api
         client = EM::Twitter::Client.connect(tweet_stream)
@@ -53,8 +53,7 @@ namespace :db do
             created_at: abridged_tweet["created_at"]
           )
         end
-        
-      # end
+      #end # WebSocket server
     end
   end
 end
