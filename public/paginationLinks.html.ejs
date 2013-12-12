@@ -1,12 +1,17 @@
 <div class="pagination-links">
   <% if (data.tweets.length === 0) { %>
-    <a href='#' class="previous">previous</a>
-    <span class="notice">No Tweets</span>
+    <ul class="pagination">
+      <li><a href='#' class="previous">&laquo; prev</a></li>
+    </ul>
+    <br><span class="notice">No Tweets</span>
   <% } else { %>
-    <% if (parseInt(data.page) === 1 ) { %>
-      <a href="#" class="next">next</a>
-    <% } else { %>
-      <a href='#' class="previous">previous</a>  <a href='#' class="next">next</a>
-    <% } %>
+    <ul class="pagination">
+      <% if (parseInt(data.page) === 1 ) { %>
+        <li><a href="#" class="next">next &raquo;</a></li>
+      <% } else { %>
+        <li><a href='#' class="previous">&laquo; prev</a></li>
+        <li><a href='#' class="next">next &raquo;</a></li>
+      <% } %>
+    </ul>
   <% } %>
 </div>
