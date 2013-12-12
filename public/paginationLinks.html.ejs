@@ -1,0 +1,12 @@
+<div class="pagination-links">
+  <% if (data.tweets.length === 0) { %>
+    <a href='#' class="previous">previous</a>
+    <span class="notice">No Tweets</span>
+  <% } else { %>
+    <% if (data.page === 0 ) { %>
+      <a href="#" class="next">next</a>
+    <% } else { %>
+      <a href='#' class="previous">previous</a>  <a href='#' class="next">next</a>
+    <% } %>
+  <% } %>
+</div>

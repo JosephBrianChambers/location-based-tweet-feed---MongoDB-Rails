@@ -15,12 +15,12 @@ namespace :db do
 
     EM.run do
         
-      time_cap = 20 #seconds
+      time_cap = 60*5 #seconds
       #end EM event_loop
       EventMachine.add_timer(time_cap) {EM::stop_event_loop}
       
       #start web socket server
-      EM::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
+      # EM::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
         #live tweets to draw live feed from
         # live_tweets =[]
         # feed_rate = 5 #seconds
@@ -31,27 +31,30 @@ namespace :db do
         
         #connect to twitter stream api
         client = EM::Twitter::Client.connect(tweet_stream)
+        client.on_error do |msg|
+          p msg
+        end
+
         client.each do |tweet|
           tweet = JSON.parse(tweet)
           
           abridged_tweet = {
             "text" => tweet["text"],
-            "screen_name" => tweet["user"]["screen_name"],
-            "coordinates" => tweet["coordinates"]["coordinates"],
+            "screen_name" => tweet["user"]        ? tweet["user"]["screen_name"] : "Blixa",
+            "coordinates" => tweet["coordinates"] ? tweet["coordinates"]["coordinates"] : [0,0],
             "created_at"  => tweet["created_at"]
           }
           
           #live_tweets << abridged_tweet.to_json
-          
-          # Tweet.create(
-            # text: abridged_tweet["text"],
-            # screen_name: abridged_tweet["screen_name"],
-            # coordinates: abridged_tweet["coordinates"],
-            # created_at: abridged_tweet["created_at"]
-          # )
+          Tweet.create(
+            text: abridged_tweet["text"],
+            screen_name: abridged_tweet["screen_name"],
+            coordinates: abridged_tweet["coordinates"],
+            created_at: abridged_tweet["created_at"]
+          )
         end
         
-      end
+      # end
     end
   end
 end

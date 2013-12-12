@@ -1,0 +1,10 @@
+
+<ul class="tweets list-group">
+  <% data.tweets.forEach(function (tweet) { %>
+    <li class="tweet list-group-item">
+      <%= tweet.screen_name %><br>
+      <%= tweet.created_at %><br><br>
+      <%= tweet.text %>
+    </li>
+  <% }) %>
+</ul>

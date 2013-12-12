@@ -27,6 +27,7 @@ gem "origin", "~> 1.0.4"
 gem 'kaminari'
 gem 'figaro'
 gem 'em-websocket'
+gem 'ejs'
 
 
 

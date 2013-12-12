@@ -3,8 +3,9 @@
     <%= render partial: "form" %>
   </div>
   
-  <div class="col-md-4">
-    <ul class="tweets list-group">
+  <div class="tweet-feed col-md-4">
+
+    <!-- <ul class="tweets list-group">
       <% @tweets.each do |tweet|%>
       <li class="tweet list-group-item">
         <%= tweet.screen_name %> - <%= tweet.created_at%><br><br>
@@ -12,14 +13,14 @@
       </li>
       <%end%>
     </ul>
-    <%= paginate @tweets %>
+    <%= paginate @tweets %> -->
   </div>
 
   <div class="col-md-6">
     <div id="map-canvas"></div>
   </div>
 
-
+  <ul class="test"></ul>
 
   <!-- google map -->
 

@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery.serializeJSON
+//= require ejs_0.9_alpha_1_production
 //= require_tree .
