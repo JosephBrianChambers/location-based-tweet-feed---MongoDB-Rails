@@ -2,7 +2,7 @@
 
 ## About
 
-Use this app [live on heroku](https://location-tweet-feed.herokuapp.com/)
+Use this app [live on heroku](https://location-tweet-feed.herokuapp.com/) (allow ~10 sec for heroku to wake up)
 
 This web app is written with Rails 3 and MongoDB and Mongoid. Currently, the Twitter streaming API is periodically consumed (all geo-located tweets) and content is saved to Mongo db indexed by geo-location and creation time. Users can provide a lat/long and radius to retrieve all tweets from the specified location and display the location where the tweets were generated on a map using Google Map API.
 
